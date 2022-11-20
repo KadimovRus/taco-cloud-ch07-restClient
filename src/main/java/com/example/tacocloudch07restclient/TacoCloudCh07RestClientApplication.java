@@ -19,6 +19,16 @@ public class TacoCloudCh07RestClientApplication {
         Ingredient ingredient = restClient.getIngredientById("FLTO");
 
         System.out.println(ingredient);
+
+        Ingredient ingred = restClient.getIngredientById("PSTO");
+
+        if(ingred == null) {
+            Ingredient ingredientNew = new Ingredient("PSTO", "PROSTO TEST INGREDIENT", Ingredient.Type.VEGGIES);
+            restClient.createIngredient(ingredientNew);
+        } else {
+            ingred.setId("PSTO");
+            restClient.deleteIngredient(ingred);
+        }
     }
 
 }
